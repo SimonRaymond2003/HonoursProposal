@@ -1,0 +1,734 @@
+---
+title: "A Predictive and Casual Analysis of Contributing Factors for 4th Down Attempt Conversions in the NFL"
+author: "Simon Raymond"
+date: "2024-12-04"
+department: "Economics"
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    fontsize: 11pt
+    code-block-font-size: 5pt
+    include-in-header: 
+      text: |
+        \usepackage{hyperref}
+        \hypersetup{
+            colorlinks=true,
+            linkcolor=blue,
+            filecolor=magenta,
+            urlcolor=blue,
+            citecolor=blue
+        }
+---
+
+\newpage
+
+# Introduction
+
+## Background
+
+The NFL is a multi-billion dollar industry that has seen rapid growth within the USA and internationally. Davis and End \hyperref[davis2010]{(2010)} argue that successful NFL franchises have measurable economic impacts on their local areas. This growth has placed more and more importance on the performance of NFL teams as they fight to win games to increase the popularity of their team. Teams are willing to invest time and money into finding different strategies that assist their organization. One such area that has received much attention is the idea of maximizing the expected win percentages of teams. This leads teams to look to strategies that may be outside of the culture norm.
+
+For many years in the NFL there seemed to be a consistent standard that on 4th down your team will kick a field goal or punt the ball for better field position. The only exception being the dying moments in a game when teams are desperate. However data display tools have let us see an increase in the overall attempt percentage of teams on 4th down (\hyperref[raymond2024]{Raymond, 2024}). This is signalling a change in culture
+
+In the NFL there has been a increasing feeling that teams need to be more aggressive on 4th downs. We have seen teams adopt this strategy. Most famously is the Detroit lion's mentality since the arrival of their current head coach Dan Campbell. The lions adopted a aggressive strategy to match their aggressive "biting off knee caps" mentality. While the lions have seen success for the first time in years they have also been criticized for their aggressive play calling. This was seen in the 2023-24 playoff divisional round game in which the lions failed a 4th down attempt that was painted as unnecessary \hyperref[sportingnews2024]{Sporting News, 2024}. After this failed 4th down attempt there seemed to be a shift in momentum and the lions lost the game.
+
+## Research Problem
+
+A result like this makes us ask the question "Did the lions make the right call?". This question seems to be getting answered as "yes" by the current literature on this topic. However, we need to know if different teams should go for it or not go for it depending on their situation and team build. For example it could be argued that the lions should have attempted the crucial 4th down in the 2023-24 playoff divisional round game. However if the panthers (which were a significantly worse team) where is that situation it could be argued that they should not have been as aggressive. This is because the panthers could have had a worse chance of being able to convert on 4th down.
+
+On top of this we must be weary of any recommendation that is given to a head coach. The truth is that we are not on the field, in the locker rooms, or in team meeting. This means coaches may know more then us in certain game time decision. We must approach this topic with the idea of being more practical and clear to coaches.
+
+## Research Questions
+
+This leads us to have a need to answer some key questions about 4th downs in the NFL. First is are there certain key predictable signals that can be used to decide if a given team should attempt a 4th down. Second, is what key factors or variables about players have predictive power in 4th down attempts. In other words are there players that are more important in 4th down situations when compared to other situations. Finally. do these key factors about players have a casual effect on the outcome of 4th down attempts? Answering these questions will allow coaches to look for key signals in 4th down situations and to know which players to start on that 4th down if it is decided to attempt. This also can be applied in discovering specialty players that are overlooked due to poor performances in situations that are not similar to 4th down.
+
+# Literature Review
+
+## Risk aversion
+
+Much of this problem revolves around the idea that NFL coaches are acting overly averse to risk which is lowering their expected wins. \hyperref[romer2006]{Romer (2006)} found that teams had begun to move towards a more conservative or safe strategy in the NFL. He argues that teams value successful gambles more then the expected win percentage in a game. He theorizes that the poor decision making is either due to risk aversion or it is due to poor information.
+
+To further this point using matching analysis, \hyperref[yam2018]{Yam and Lopez (2018)} quantified this conservative decision-making, finding that teams could gain approximately 0.4 wins per year by being more aggressive on fourth downs.
+
+\hyperref[goff2019]{Goff and Locke (2019)} found when revisiting Romer's framework that Romer's core findings are still held to be true. However they argue that overly conservative calls are not due to poor decision making. Instead they point to risk aversion as they estimate that coaches are willing to give up two-thirds of a expected point to avoid the uncertainty of fourth down attempts.
+
+On top of this, there seems to be evidence that coaches are more cautious when their job is on the line. \hyperref[owens2018]{Owens and Roach (2018)} found that in the NCAA coaches are relatively more conservative when they are more likely to be fired. At the same time they found when a coach was likely to be promoted that the coach is more aggressive then normal.
+
+## Momentum
+
+If a team feels to be "on fire" should they be more aggressive since they feel to have momentum? The most famous literature in this is on the fallacy of the "hot hand". The hot hand is a cognitive bias that leads people to believe that a person who has a successful outcome is more likely to have a successful outcome in future attempts. \hyperref[gilovich1985]{Gilovich et al. (1985)} investigated the "hot hand" and "shooting streaks" in basket ball. They found that both players and fans believed in the fallacy despite shots being independent of each other. \hyperref[losak2023]{Losak et al. (2023)} similarly discovered that fantasy baseball users gravitated towards "hot" players. At the same time they were unable to identify a viable hot hand strategy in DraftKings DFS baseball.
+
+Despite these common findings there does seem to be some evidence of momentum existing in the NFL. \hyperref[roebber2022]{Roebber et al.(2022, p. 2)} defined momentum in the NFL as "the sustained increase in win probability by a single team over the course of at least 2 successive changes in possession". With this definition they found that streaks of win probability in football are non-random and are in fact predictable with Artificial Neural Network Models.
+
+\hyperref[lehman2013]{Lehman \& Hahn (2013)} looked to identify momentum across and within games in the NFL. Within-period momentum was found to encourage teams to take more risks. Negative within-period momentum was in-turn found to encourage teams to take less risks. It was also discovered that across-period momentum has a effect only until a within period momentum was established in a game.
+
+## Heckman correction
+
+The Heckman correction is a two-step estimation process that is used to correct for sample selection bias (\hyperref[heckman1979]{Heckman, 1979}). The first step is to estimate the probability of selection into the sample. The second step is to estimate the outcome of interest. Heckmans original paper was focused on applying probit and linear models for this method. However, due to the non-linearities in NFL data we will be looking to apply a non-parametric model to our situation. I am currently in the process of looking at recent literature and applications of self sample selection bias corrections with non-parametric models.
+
+Here are some papers that I will be looking at:
+
+- \hyperref[klein1993]{Klein and Spady (1993)} 
+- \hyperref[das2003]{Das, Newey, and Vella (2003)}
+- \hyperref[cook2022]{Cook (2022)} 
+
+## Research Gap
+
+The gap in the current research revolves around the gap in quality data. Currently we see many studies include team grades or summary statistics about teams that are playing against each other. This type of generalization is needed for econometric models that cannot handle large amounts of variables. However, our non-parametric models will be able to handle data with thousands of different variables. To take advantage of this we will have information about every single player that is on the field when the ball is snapped. This will allow us to have better prediction power then previous researchers. This lack of work accomplished with highly specific data then in turn creates a lack in researchers identifying key variables about different players in the field. This is why our combined approach of predictive and casual tools will be so effective. We will be able to see what variable are or are not having a effect on 4th down conversions.
+
+# Data
+
+## Play by Play (PBP)
+
+Our data consists of play by play data from the NFL. This data is pulled from the  nflverse package in R (\hyperref[carl2024]{Carl et al., 2024}). The data ranges from 2016 to 2023. The reason for this is that after 2016 the NFL started to put tracking chips in NFL player's jerseys. This gives us information after 2016 of what players are on the field for each snap. As a note a weeks 16-18 in 2023 are missing gsis_ids of who was on the field and the data in 2016 is described as not as reliable.
+
+To create my data I have merged play by play data, participation data, roster data, and injury data. However, we may create different versions of our data depending on our models that we choose to use.
+
+First we have a third down data set. This data has the purpose of allowing us to test our Heckman Variable's validity in showing that a variable has no predictive power on a third down conversion. We then use this to bolster our argument that the variable in question has no predictive power on a 4th down conversions. We also will have a fourth down "attempts" data set. This data set will be used to show that our Heckman Correction variable does have strong prediction power on the decision to attempt a 4th down or not. (this situation is more unbalanced). Finally the end goal is to be using data of purely 4th down attempts to predict the conversion of a play.
+
+While it is subject to change the 3rd down data set has 102,000+ rows and 1300+ columns. The 4th down attempts data set has 60,000+ rows and 1300+ columns. 
+
+## Pro Football Focus (PFF)
+
+Our weekly player data is a combination of reports from \hyperref[pff2024]{Pro Football Focus, 2024} from 2016 to 2023. This data is downloaded in the form of different positional reports. For example, we downloaded the receiving reports labeled as "Receiving Grades, Receiving Depth, Receiving Concept, and Receiving vs Scheme". Each row in these reports would be how a player did in certain areas covered by that report that week. This however is useless to us as we needed to merge every report into each other.
+
+We ended up with a data set that is 158,000+ rows and 1,500+ columns. Each column is a different stat that may or may not apply to a player (e.g. a receiving grade does not apply to a DE).
+
+So for each row in this engineered data set there is a player, their basic information, the year and week, and 1,500+ variables of how that player preformed in a specific week. 
+
+
+## Merging 
+
+The most key aspect of this entire thesis is the merging of these two datasets. We can start with how in our pbp data we have the gsis_ids of every player that was on the field at the time of the play. A gisi_id is the main unique identifier for the player. So we need to take our PFF data and for each player merge it into the pbp data. The pbp data that we are merging it into has 9,000+ rows which each represent a 4th down attempt that a team intended to go for. This creates a data set with 9,000+ rows and 25,000+ columns. The amount of columns is due to the specificness of the information that we have about players on the field. As we continue to merge this data and add or drop different types of variables this number of columns will change. I believe it will increase as we find new information. As our project proceeds we will narrow down our specificness as needed.
+
+A problem we are encountering is that the PFF players do not have a gsis_id. They instead have a pff_id. Unfortunately not all players with a gsis_id have a available pff_id. On top of that the names between the data sets do not always match up. Currently I am working on different methods of matching these players between datasets. There also are multiple players with the same name. This match I currently believe can be done off of parts of names, positions, and teams. For the players that have a pff_id assigned to their gsis_id this matching process is not needed.
+
+# Methodology
+
+## Measuring Accuracy
+
+In order to measure the accuracy of our models we will be using the area under the curve (AUC) of the ROC curve. This is a common metric used in binary classification problems. The ROC curve is a plot of the true positive rate against the false positive rate for the different possible thresholds of a confusion table. These values will be tested and reported over 10,000 tests of bootstrapped test data.
+
+Our methodology involves two main types of tools. These are predictive tools and casual econometrics tools.
+
+## Predictive Tools
+
+These tools are going to be used to predict the outcome of a 4th down attempt. If these outcomes of these predictions are acceptable we will identify what variables had predictive power in our non-parametric models. The models that will be used are Random Forest, GBM boosting, XGBoosting, and possibly Neural Networks. All boosting models will be tuned with some form of grid search.
+
+## Casual econometrics tools
+
+After our predictive modeling we will be left with variables that have prediction power on the outcome of a 4th down attempt. Then we turn to our casual econometrics tools. Our situation faces one key problem. There is selection bias around the 4th down attempts. This means that we never see the outcomes of 4th down attempts that never happened. In those situations the ball was punted or a field goal was attempted. To try to control this selection bias we will be using a Heckman correction. A form of OLS can be pursued with the Heckman correction. However, we will also be looking to apply some form of non-linear model to our situation. This is due to the intense non-linearities that are found in NFL data.
+
+This self selectiong bias is created in our current world by the fact that the coach is making a decision about "going for it" or not "going for it" on 4th down. When we control for this we are attempting to create a world where the 4th down attempts that we see are free from bias. This is to say it creates a world where we do actaully see all the 4th down attempts that could have happened.
+
+The Heckman correction requires a key exogenous variable that predicts 4th attempts but not the results of those attempts. The variable I propose is score differential. The score differential without a doubt has predicting power on whether or not a team attempts a 4th down. The question is does it have prediction power on the actual conversion of the 4th down. I would argue not.
+
+My one fear was originally that score differential signals a “better” team. Then since that team is “better” the 4th down result will receive prediction power from the score differential. However, if we account for how good the team are I believe that argument would not hold up. Even without accounting for how good teams are I found that the score differential was almost useless for predicting the 3rd down conversion result (in this case we used 3rd down plays to stand in for 4th down conversions). We can examine the following example. Imagine a world where the panthers (weaker team) are playing the saints (average team). The panthers are losing by 30 points so the score differential is -30. Obviously here the panthers probably have a below average chance of conversion on a 4th down. However on 4th down the teams swap and the chiefs (better team) take over for the panthers. I don’t think that it is fair to say that the 30 point deficit will make it harder for the chiefs to convert on 4th down. Similarly one may say that the Chiefs may have a tougher time converting on this 4th down because they are playing in a more desperate situation. The factors though of this desperate situation can also be accounted for.
+
+This seems to be backed up by the [beginnings of my analysis](#begining-analysis).
+
+# Expected Outcomes
+
+Currently we are predicting 3rd down conversions with a AUC that is in the mid 60s range. This is not incredible but it makes sense as the baseline predictions only account for some basic situation variables. I expect to have presentable AUC in the 80s range when we work on our properly merged 4th down data set. Then i believe that variables will be identified that will be proven to have a casual effect on 4th down conversions. In this process however it is important to recognize the significance of finding a variable to not have prediction power or a casual effect.
+
+# Timeline
+
+-   I will have the data merged by the beginning of the winter 2025 semester (names matching). 
+-   We then will be able to move to modeling and analysis. 
+
+# Begining Analysis {#begining-analysis}
+
+```{r include=FALSE}
+library(readr)
+library(DataExplorer)
+library(dplyr)
+library(car)
+library(randomForest)
+library(tibble)
+library(pROC)
+library(ggplot2)
+library(pdp)
+library(ROCR)
+```
+
+```{r}
+model_3rd3 <- read_csv("model_3rd3.csv")
+model_4th3 <- read_csv("model_4th3.csv")
+```
+
+
+```{r, include=FALSE}
+
+model_4th3 <- model_4th3 %>%
+  select(
+    attempt,             # Target variable: Whether coach elected to go for it on 4th down (1/0) (0 = punt or field goal)
+    # Game situation
+    down1_pct,           # run % on 1st down
+    down2_pct,           # Run % on 2nd down 
+    down3_pct,           # Run % on 3rd down
+    opp_scss = successes,            # Number of successful 4th down attempts the opposing team had last game
+    opp_fails = failures,            # Number of failed 4th down attempts the opposing team had last game
+    score_diff,          # Point differential (positive = winning)
+    min_rem = minutes_remaining,   # Minutes remaining in game
+    
+    # Play specifics 
+    ydstogo,            # Yards needed for first down
+    yardline_100,       # Distance from opponent's endzone
+    
+    # Game management
+    offtimes = posteam_timeouts_remaining,  # Offensive team's timeouts left
+    deftimes = defteam_timeouts_remaining,  # Defensive team's timeouts left
+    
+    # Game context
+    week,               # Week of the season
+    prep_days,          # Days to prepare for game 
+    home,               # Whether team is home (1/0) (0 = away)
+    dome,               # Whether game is in dome (1/0) (0 = outdoor or open)
+    
+    # Play type indicators
+    KICKOFF,            # If the team received the ball from the opponent via kickoff (1/0)
+    PUNT,               # If the team received the ball from the opponent via a punt (1/0)
+    #If kickoff and punt are both 0 then the team received the ball from the opponent via a different way
+    
+    random_var          # Random variable for analysis
+  )
+
+```
+
+```{r, include=FALSE}
+model_3rd3 <- model_3rd3 %>%
+  select(
+    converted,            # Target variable: Whether the conversion was successful (1/0)
+    # Game situation
+    down1_pct,           # run % on 1st down
+    down2_pct,           # Run % on 2nd down
+    down3_pct,           # Run % on 3rd down
+    opp_scss = successes,           # Number of successful 4th down attempts the oposing team had last game
+    opp_fails = failures,            # Number of failed 4th down attempts the oposing team had last game
+    score_diff,          # Point differential (positive = winning)
+    min_rem = minutes_remaining,   # Minutes remaining in game
+    
+    # Play specifics
+    ydstogo,            # Yards needed for first down
+    yardline_100,       # Distance from opponent's endzone
+    rush,               # Whether it's a rushing play (1/0) (0 = pass)
+    
+    # Game management
+    offtimes = posteam_timeouts_remaining,  # Offensive team's timeouts left
+    deftimes = defteam_timeouts_remaining,  # Defensive team's timeouts left
+    
+    # Game context
+    week,               # Week of the season
+    prep_days,          # Days to prepare for game
+    home,               # Whether team is home (1/0) (0 = away)
+    dome,               # Whether game is in dome (1/0) (0 = outdoor or open)
+    
+    # Play type indicators
+    KICKOFF,            # If the team received the ball from the opponent via kickoff (1/0)
+    PUNT,               # If the team received the ball from the opponent via a punt (1/0)
+#If kickoff and punt are both 0 then the team received the ball from the opponent via a different way 
+    
+    random_var          # Random variable for analysis
+  )
+```
+
+```{r, include=FALSE}
+model_4th3 <- model_4th3 %>%
+  filter(score_diff > -30 & score_diff < 30)
+model_3rd3 <- model_3rd3 %>%
+  filter(score_diff > -30 & score_diff < 30)
+```
+
+```{r, include=FALSE}
+# Scale non-binary variables while preserving column names
+model_3rd3 <- model_3rd3 %>%
+  mutate(across(c(down1_pct, down2_pct, down3_pct, opp_scss, opp_fails, score_diff, 
+                  min_rem, ydstogo, yardline_100, prep_days, random_var), scale))
+
+model_4th3 <- model_4th3 %>%
+  mutate(across(c(down1_pct, down2_pct, down3_pct, opp_scss, opp_fails, score_diff, 
+                  min_rem, ydstogo, yardline_100, prep_days, random_var), scale))
+```
+
+## Notes before proceeding
+
+-   For display purposes most of the code that produces the data and plots are not shown. However, the code will be made available via my personal github page (). 
+-   The OLS model takes no account for Heteroskedasticity or Autocorrelation.
+-   The current data ignores how good the teams are (offensive and defensive). For that reason our prediction power doesn't seem incredible. Howeve, with the proper data that we are creating we can improve our results.
+-   The relationships are definitely non-linear. In some cases though, I could engineer the data to help OLS. For example the minutes left in the game could be two columns one that is the half and one that is the time from 0-30. However, our end goal is to be using a non-linear model.
+-   I added a random (simulated/useless) variable to the data to give us a reference point of what variables are useless in our random forest model.
+-   Week 1 was removed from the data due to how we created some of our variables.
+-   The data is scaled.
+-   the ROCR curves are from one run of random forest (double check if I don't need to loop it because it is random forest)
+
+## Measures of prediction power Random Forest
+
+### MDI (gini/node purity)
+
+As Gini impurity decreases (meaning nodes become more pure), the MDI value increases.
+
+This measures how good a variable is at promoting node purity during the splits. This is for the training of the model. This leads MDI to not always be the best measure. MDI thrives when variables have a lot of categories, variability or are continuous. For example, a categorical variable with 10 levels will have a higher MDI than a binary variable.
+
+That is why the random variable did good in this measure. The splits in the trees will sometimes use useless variables. This is because it fits the training data and it is very normal for RF to use bad predictors (that is the entire point of randomforest). However MDI can make it appear that unimportant variables are in fact important.
+
+### MDA (Mean Descrease in Accuracy)
+
+This looks are more how the model would do if we removed the variable in question from the model. A negative MDA means that the model would do better without the variable. It is more robust and we need to pay more attention to this rather than MDI.
+
+### Partial Dependency Plots (PDP)
+
+Partial dependency plots in Random Forests show how one variable affects predictions while accounting for all other variables in a realistic way. Rather than arbitrarily fixing other variables to constants, the method uses all actual combinations of other variables from the training data.
+
+For example, if we want to understand how score differential affects fourth down decisions, the process works like this: For each potential score differential value (say -14 points), the model temporarily sets every play in the dataset to have that score differential while keeping all other features (like field position, time remaining, etc.) exactly as they occurred in real games. It then averages all these predictions to show the isolated effect of being down 14 points.
+
+### A Caution with PDPs
+
+```{r, include=FALSE}
+rf4 <- randomForest(as.factor(attempt) ~ ., 
+                    data = model_4th3,
+                    importance = TRUE,  # Calculate both MDI and MDA
+                    ntree = 1500)
+
+# Get scaling attributes for random_var from the original data
+random_var_center <- attr(model_4th3$random_var, "scaled:center")
+random_var_scale <- attr(model_4th3$random_var, "scaled:scale")
+
+# Create a grid of random_var values
+random_grid_points <- seq(min(model_4th3$random_var), max(model_4th3$random_var), length.out = 50)
+
+# Create prediction data frame
+random_pred_data <- model_4th3[rep(1, length(random_grid_points)), ]
+random_pred_data$random_var <- random_grid_points
+
+# Get predictions
+random_predictions <- predict(rf4, random_pred_data, type = "prob")[,2]
+
+# Create plot data
+random_plot_data <- data.frame(
+  random_var = random_grid_points * random_var_scale + random_var_center,  # Convert back to original scale
+  probability = random_predictions
+)
+
+# Create plot
+pdp_random <- ggplot(random_plot_data, aes(x = random_var, y = probability)) +
+  geom_line(color = "#4DAF4A", size = 1.2) +
+  labs(
+    title = "Effect of Random Variable on 4th Down Attempt Probability",
+    x = "Random Variable (Simulated)",
+    y = "Probability of 4th Down Attempt"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+```
+
+To issue a strong warning however, here is a PDP of a variable that has absolutely no connection with 3rd down conversions:
+
+Here is the distribution plot of the random variable we are using:
+```{r, include=FALSE}
+rv_plot <- ggplot(model_4th3, aes(x = random_var)) +
+  geom_density(fill = "#4DAF4A", alpha = 0.7) +
+  labs(
+    title = "Distribution of Random Variable",
+    x = "Random Variable (Simulated)",
+    y = "Density"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+```
+
+```{r}
+rv_plot
+```
+
+Here is the PDP of the random variable:
+
+
+```{r}
+# Display the plot
+pdp_random
+```
+
+This plot will seem confusing. Why does a useless simulated variable seem to have predictive power. This random variable does not have predictive power or a casual effect just because of the PDP plot! As we will see, this random variable has negative MDA. While it has a very high MDI that is simply due to the specificness of the variable. This plot displays how the random forest model is using it. Models like random forest and XGBoosting are designed to give a voice to weak predictors. The PDP simply shows how the model is using that variable. The model may be incorrectly picking up on a pattern that is not truly within our data. This is proven by the variable's lack of use near to the center of its probability distribution. However, as we move away from the from the center of the random variable's distribion we get more specificness that the random forest model thinks is useful for prediction. There are less observations near the tails of our distribution and therefore more opportunities to make a obscure split to help our leaf node purity(gini score) in the training process. This example needs to serve as a strong caution when observing our PDP plots in the following analysis. 
+
+## The Data
+
+### Points about the data
+
+The data we are using is from the 2023 NFL season. We ended up removing the first week of the season due to how we created some of our variables. In preparing our data for OLS analysis we decided to remove the temperature and wind variables since they contained NA values. If the score differential was above 30 or below -30 then we removed that observation. The non-binary variables were scaled while preserving the column names.
+
+## Variable Descriptions
+
+- `attempt` (4th down data): Binary indicator (1/0) representing whether a coach elected to attempt a 4th down conversion rather than punt or attempt a field goal
+- `converted` (3rd down data): Binary indicator (1/0) showing if the play resulted in a successful conversion for a first down
+- `down1_pct`: Running play percentage on 1st downs so far in the game
+- `down2_pct`: Running play percentage on 2nd downs so far in the game
+- `down3_pct`: Running play percentage on 3rd downs so far in the game
+- `opp_scss` (previously `successes`): Number of successful 4th down conversions by the opposing team in their previous game
+- `opp_fails` (previously `failures`): Number of failed 4th down attempts by the opposing team in their previous game
+- `score_diff`: Point differential at the time of the play (positive values indicate the offensive team is winning)
+- `min_rem` (previously `minutes_remaining`): Minutes remaining in the game
+- `ydstogo`: Yards needed to achieve a first down
+- `yardline_100`: Distance in yards from the opponent's endzone (e.g., 75 means the ball is on the offensive team's 25-yard line)
+- `rush` (3rd down data only): Binary indicator (1/0) for whether the play was a rushing attempt or a pass
+- `offtimes` (previously `posteam_timeouts_remaining`): Number of timeouts remaining for the offensive team
+- `deftimes` (previously `defteam_timeouts_remaining`): Number of timeouts remaining for the defensive team
+- `week`: Week number of the NFL season (Week 1 excluded)
+- `prep_days`: Number of days the team had to prepare for this game
+- `home`: Binary indicator (1/0) for whether the offensive team is playing at home
+- `dome`: Binary indicator (1/0) for whether the game is being played in a dome
+- `KICKOFF`: Binary indicator (1/0) for whether the offensive team received the ball via kickoff
+- `PUNT`: Binary indicator (1/0) for whether the offensive team received the ball via punt
+Note: If both KICKOFF and PUNT are 0, the team received possession through another method (e.g., turnover)
+- `random_var`: Simulated random variable included as a reference point for evaluating variable importance in our models
+
+
+```{r}
+glimpse(model_3rd3)
+glimpse(model_4th3)
+```
+
+## OLS
+
+### 4th down "will the coach attempt to go for it?"
+
+```{r}
+# Fit OLS model
+OLS_4th <- lm(attempt ~ ., data = model_4th3)
+summary(OLS_4th)
+vif(OLS_4th)
+```
+
+### 3rd down "will the play convert to a 1st down?"
+
+```{r}
+# Fit OLS model
+OLS_3rd <- lm(converted ~ ., data = model_3rd3)
+summary(OLS_3rd)
+vif(OLS_3rd)
+```
+
+## Random Forest
+
+### 4th down "will the coach attempt to go for it?"
+
+Here we display the results on a 4th down random forest model. This model predicts attempts and is run with a ntree = 1500. We are reporting Out Of Bag results. 
+
+```{r, include=FALSE}
+# Train Random Forest
+rf4 <- randomForest(as.factor(attempt) ~ ., 
+                    data = model_4th3,
+                    importance = TRUE,  # Calculate both MDI and MDA
+                    ntree = 1500)
+
+# Get variable importance measures
+importance_df <- importance(rf4) %>%
+  as.data.frame() %>%
+  rownames_to_column("Variable") %>%
+  arrange(desc(MeanDecreaseAccuracy))
+
+# Calculate OOB AUC
+oob_pred <- predict(rf4, type = "prob")[,2]
+oob_auc <- auc(model_4th3$attempt, oob_pred)
+```
+
+
+```{r}
+# Print results
+print(importance_df)
+
+print(paste("OOB AUC:", round(oob_auc, 3)))
+
+# Plot variable importance
+varImpPlot(rf4,
+           sort = TRUE,
+           main = "Variable Importance Plot",
+           n.var = min(20, ncol(model_4th3)-1))
+```
+
+```{r, include=FALSE}
+# Calculate ROC object from existing predictions
+roc_4th <- roc(model_4th3$attempt, oob_pred)
+
+# Create data frame for plotting
+roc_df_4th <- data.frame(
+  FPR = 1 - roc_4th$specificities,
+  TPR = roc_4th$sensitivities
+)
+```
+
+
+```{r, include=FALSE}
+# Create the plot
+rocr_4th <- ggplot(roc_df_4th, aes(x = FPR, y = TPR)) +
+  geom_line(size = 1.2, color = "#E41A1C") +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50") +
+  annotate("text", x = 0.75, y = 0.25, 
+           label = sprintf("AUC: %.3f", oob_auc)) +
+  labs(title = "ROC Curve for 4th Down Attempt Predictions",
+       x = "False Positive Rate",
+       y = "True Positive Rate") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold")
+  ) +
+  coord_equal()
+```
+
+```{r}
+rocr_4th
+```
+
+
+This is a very good AUC despite missing how good the teams are. This makes sense as NFL coaches are trying to make optimal decisions for their team to win.
+
+```{r, include=FALSE}
+# Get scaling attributes for score_diff from the original data FIRST
+score_diff_center <- attr(model_4th3$score_diff, "scaled:center")
+score_diff_scale <- attr(model_4th3$score_diff, "scaled:scale")
+
+# Create a grid of score_diff values
+grid_points <- seq(min(model_4th3$score_diff), max(model_4th3$score_diff), length.out = 50)
+
+# Create prediction data frame
+pred_data <- model_4th3[rep(1, length(grid_points)), ]
+pred_data$score_diff <- grid_points
+
+# Get predictions
+predictions <- predict(rf4, pred_data, type = "prob")[,2]
+
+# Create plot data
+plot_data <- data.frame(
+  score_diff = grid_points * score_diff_scale + score_diff_center,  # Convert back to original scale
+  probability = predictions
+)
+
+# Create plot
+pdp_4th <- ggplot(plot_data, aes(x = score_diff, y = probability)) +
+  geom_line(color = "#E41A1C", size = 1.2) +
+  labs(
+    title = "Effect of Score Differential on 4th Down Attempt Probability",
+    x = "Score Differential (Points)",
+    y = "Probability of 4th Down Attempt"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+```
+
+```{r}
+pdp_4th
+```
+
+Why do we see score differential influencing prediction of attempts in our random forest model in this way? First we note that if a team is losing they are more desperate. These more desperate teams are more likely to go for it on 4th down. On the other hand if a team is winning then they feel more aggressive. These teams that are winning are also more likely to be a better team. This can be captured with other variables as we proceed with our research. 
+
+### 3rd down "will the play convert to a 1st down?"
+
+Here we display the results of a 3rd down random forest model. This model predicts conversion and is run with a ntree = 1500. We are reporting Out Of Bag results. 
+
+```{r, include=FALSE}
+# Train Random Forest
+rf3 <- randomForest(as.factor(converted) ~ ., 
+                    data = model_3rd3,
+                    importance = TRUE,  # Calculate both MDI and MDA
+                    ntree = 1500)
+
+# Get variable importance measures
+importance_df <- importance(rf3) %>%
+  as.data.frame() %>%
+  rownames_to_column("Variable") %>%
+  arrange(desc(MeanDecreaseAccuracy))
+
+# Calculate OOB AUC
+oob_pred <- predict(rf3, type = "prob")[,2]
+oob_auc <- auc(model_3rd3$converted, oob_pred)
+```
+
+
+```{r}
+# Print results
+print(importance_df)
+
+print(paste("OOB AUC:", round(oob_auc, 3)))
+
+# Plot variable importance
+varImpPlot(rf3,
+           sort = TRUE,
+           main = "Variable Importance Plot",
+           n.var = min(20, ncol(model_3rd3)-1))
+
+```
+
+```{r, include=FALSE}
+# Calculate ROC object from existing predictions
+roc_3rd <- roc(model_3rd3$converted, oob_pred)
+
+# Create data frame for plotting
+roc_df_3rd <- data.frame(
+  FPR = 1 - roc_3rd$specificities,
+  TPR = roc_3rd$sensitivities
+)
+
+# Create the plot
+rocr_3rd <- ggplot(roc_df_3rd, aes(x = FPR, y = TPR)) +
+  geom_line(size = 1.2, color = "#377EB8") +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50") +
+  annotate("text", x = 0.75, y = 0.25, 
+           label = sprintf("AUC: %.3f", oob_auc)) +
+  labs(title = "ROC Curve for 3rd Down Conversion Predictions",
+       x = "False Positive Rate",
+       y = "True Positive Rate") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold")
+  ) +
+  coord_equal()
+```
+
+```{r}
+rocr_3rd
+```
+
+
+This is a bad AUC which currently makes sense as it is a baseline. This example does not have how good the teams or players are.
+
+```{r, include=FALSE}
+# Get scaling attributes for score_diff from the original data FIRST
+score_diff_center <- attr(model_3rd3$score_diff, "scaled:center")
+score_diff_scale <- attr(model_3rd3$score_diff, "scaled:scale")
+
+# Create a grid of score_diff values
+grid_points <- seq(min(model_3rd3$score_diff), max(model_3rd3$score_diff), length.out = 50)
+
+# Create prediction data frame
+pred_data <- model_3rd3[rep(1, length(grid_points)), ]
+pred_data$score_diff <- grid_points
+
+# Get predictions
+predictions <- predict(rf3, pred_data, type = "prob")[,2]
+
+# Create plot data
+plot_data <- data.frame(
+ score_diff = grid_points * score_diff_scale + score_diff_center,  # Convert back to original scale
+ probability = predictions
+)
+```
+
+
+```{r}
+# Create plot
+pdp_3rd <- ggplot(plot_data, aes(x = score_diff, y = probability)) +
+ geom_line(color = "#377EB8", size = 1.2) +
+ labs(
+   title = "Effect of Score Differential on 3rd Down Conversion Probability",
+   x = "Score Differential (Points)",
+   y = "Probability of 3rd Down Conversion"
+ ) +
+ theme_minimal() +
+ theme(
+   plot.title = element_text(hjust = 0.5, face = "bold"),
+   panel.grid.minor = element_blank()
+ )
+```
+
+```{r}
+pdp_3rd
+```
+
+
+Why does the RF model use score differential in the way that it does? If the score differential is 0 then the team is acting as it should. If a team is winning that team is often overly cautious which is bad in terms of your performance. If a team is losing then that team may have to be overly aggressive which is also bad in terms of your performance. Especially because this type of aggresion is not the calculated form but it is often the forced kind. These points are once again variables that we can control for when using score differential as our exogenous variable in our selection bias correction. For example we have the yards to go for 4th downs which is a huge indicator of desperation along with the time left in the game. We can also look to use how far the QB is throwing the ball or even the play call and formation to control for desperation.
+
+## Proof of non-linearities
+
+As we can imagine NFL data is riddled with different types of non-linearities. For example the relationship between the score differential and the probability of a 4th down attempt is not linear. There are jumps in effect around scoring intervals of 3, 7 and 8 due to the scoring system in the NFL. This leads us to look more at using non-parametric models in our analysis. While the self sample selection bias correction was founded as a parametric model there is literature that supports us using a non-parametric model. 
+
+In this following section keep in mind that our OOB AUC for our random forest model with 4th down data was 0.88. In this case we are predicting if a team will attempt a 4th down pass or rushing play. If we see that a linear regression model is unable to compete with our random forest model that is a sign of non-linearities in the data. In that case we will go a step further and apply boosting methods.
+
+Here we will display the results of a algorithm that runs the lm() function which preforms OLS on 1000 bootstrapped samples of the 4th down data. The reported values are from the test samples that are bootstrapped.
+
+```{r, include=FALSE}
+# Initialize empty vector for AUC values
+auc_lm <- c()
+n <- 1000
+
+for (i in 1:n) {
+ # Create bootstrap sample indices
+ idx <- unique(sample(nrow(model_4th3), size = nrow(model_4th3), replace = TRUE))
+ trn <- model_4th3[idx, ]
+ tst <- model_4th3[-idx, ]
+ 
+ # Fit linear model on training data
+ mdl <- lm(attempt ~ ., data = trn)
+ 
+ # Get predictions on test data
+ phat <- predict(mdl, tst)
+ 
+ # Calculate AUC using ROCR
+ pred <- prediction(phat, tst$attempt)
+ auc_lm[i] <- performance(pred, "auc")@y.values[[1]]
+}
+
+auc <- auc_lm
+```
+
+
+```{r,}
+# Plot results
+plot(auc, col = "red", main = "AUC Distribution for Linear Model", 
+    xlab = "Iteration", ylab = "AUC")
+abline(h = mean(auc), col = "blue", lwd = 2, lty = 2)
+abline(h = mean(auc) - 1.96 * sd(auc), col = "green", lwd = 2, lty = 3)
+abline(h = mean(auc) + 1.96 * sd(auc), col = "green", lwd = 2, lty = 3)
+
+# Print summary statistics
+cat("Mean AUC:", mean(auc), "\n")
+cat("95% CI: [", mean(auc) - 1.96 * sd(auc), ",", mean(auc) + 1.96 * sd(auc), "]\n")
+```
+
+We see a significant worse performance then with a random forest model. 
+
+# References {.unnumbered}
+
+\label{cook2022}Cook, J. A. (2022). Sample-Selection-Adjusted Random Forests. International Journal of Data Science and Analytics, 14, 375-388.  http://dx.doi.org/10.2139/ssrn.4225014
+
+\label{das2003}Das, M., Newey, W. K., & Vella, F. (2003). Nonparametric estimation of sample selection models. The Review of Economic Studies, 70(1), 33-58. https://doi.org/10.1111/1467-937X.00236
+
+\label{gilovich1985}Gilovich, T., Vallone, R., & Tversky, A. (1985). The hot hand in basketball: On the misperception of random sequences. Cognitive Psychology, 17(3), 295-314. https://doi.org/10.1016/0010-0285(85)90010-6
+
+\label{goff2019}Goff, B. L., & Locke, C. (2019). Revisiting Romer: Digging Deeper Into Influences on NFL Managerial Decisions. Journal of Sports Economics, 20(5), 673-694. https://doi.org/10.1177/1527002518798686
+
+\label{heckman1979}Heckman, J. J. (1979). Sample Selection Bias as a Specification Error. Econometrica, 47(1), 153-161. https://doi.org/10.2307/1912352
+
+\label{klein1993}Klein, R. W., & Spady, R. H. (1993). An efficient semiparametric estimator for binary response models. Econometrica, 61(2), 387-421. https://doi.org/10.2307/2951556
+
+\label{lehman2013}Lehman, D. W., & Hahn, J. (2013). Momentum and Organizational Risk Taking: Evidence from the National Football League. Management Science, 59(4), 852-868. https://doi.org/10.1287/mnsc.1120.1574
+
+\label{losak2023}Losak, J. M., Stenquist, R., & Lovett, M. (2023). Behavioral Biases in Daily Fantasy Baseball: The Case of the Hot Hand. Journal of Sports Economics, 24(3), 352-372. https://doi.org/10.1177/15270025221128955
+
+\label{owens2018}Owens, M. F., & Roach, M. (2018). Decision-making on the hot seat and the short list: Evidence from college football fourth down decisions. Journal of Economic Behavior & Organization, 148, 226-245. https://doi.org/10.1016/j.jebo.2018.02.023
+
+\label{roebber2022}Roebber, P. J., Schultz, D. M., & Colle, B. A. (2022). On the existence of momentum in professional football. PLOS ONE, 17(6), e0269604. https://doi.org/10.1371/journal.pone.0269604
+
+\label{romer2006}Romer, D. (2006). Do Firms Maximize? Evidence from Professional Football. Journal of Political Economy, 114(2), 340-365. https://doi.org/10.1086/501171
+
+\label{yam2018}Yam, D., & Lopez, M. (2018). Quantifying the Causal Effects of Conservative Fourth Down Decision Making in the National Football League. Available at SSRN: https://ssrn.com/abstract=3114242 or http://dx.doi.org/10.2139/ssrn.3114242
+
+\label{carl2024}Carl, S., Baldwin, B., Sharpe, L., Ho, T., Edwards, J. (2024). **nflverse**. Play-by-play data for NFL games. Retrieved from [https://nflverse.nflverse.com/](https://nflverse.nflverse.com/).
+
+\label{pff2024}Pro Football Focus (PFF). (2024). NFL Player Performance Data. Accessed via subscription at [https://premium.pff.com/nfl/teams/2024/REGPO](https://premium.pff.com/nfl/teams/2024/REGPO).
+
+\label{raymond2024}Raymond, S. (2024). **4th Down Analysis App**. Interactive dashboard for analyzing 4th down decisions in the NFL. Available at: [https://jzmtko-yigit-aydede.shinyapps.io/NFL_4th_Down_App/](https://jzmtko-yigit-aydede.shinyapps.io/NFL_4th_Down_App/).
+
+\label{sportingnews2024}Sporting News. (2024). Lions' Dan Campbell criticized for fourth-down decisions in playoff loss to 49ers. Retrieved from [https://www.sportingnews.com/us/nfl/news/lions-49ers-dan-campbell-fourth-down-decisions/b54ce7cc05c4d55fc7b46285](https://www.sportingnews.com/us/nfl/news/lions-49ers-dan-campbell-fourth-down-decisions/b54ce7cc05c4d55fc7b46285).
+
+\label{davis2010}Davis, M. C., & End, C. M. (2010). A winning proposition: The economic impact of successful National Football League franchises. *Economic Inquiry*, 48(1), 39–50. https://doi.org/10.1111/j.1465-7295.2008.00124.x
+
+
