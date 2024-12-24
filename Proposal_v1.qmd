@@ -27,21 +27,21 @@ format:
 
 ## Background
 
-The NFL is a multi-billion dollar industry that has seen rapid growth within the USA and internationally. Davis and End \hyperref[davis2010]{(2010)} argue that successful NFL franchises have measurable economic impacts on their local areas. This growth has placed more and more importance on the performance of NFL teams as they fight to win games to increase the popularity of their team. Teams are willing to invest time and money into finding different strategies that assist their organization. One such area that has received much attention is the idea of maximizing the expected win percentages of teams. This leads teams to look to strategies that may be outside of the culture norm.
+The NFL is a multi-billion dollar industry that has seen rapid growth within the USA and internationally. \hyperref[davis2010]{(Davis and End 2010)} argue that successful NFL franchises have measurable economic impacts on their local areas. This growth has placed more and more importance on the performance of NFL teams as they fight to win games to increase the popularity of their team. Teams are willing to invest time and money into finding different strategies that assist their organization. One such area that has received much attention is the idea of maximizing the expected win percentages of teams. This leads teams to look to strategies that may be outside of the cultural norm.
 
-For many years in the NFL there seemed to be a consistent standard that on 4th down your team will kick a field goal or punt the ball for better field position. The only exception being the dying moments in a game when teams are desperate. However data display tools have let us see an increase in the overall attempt percentage of teams on 4th down (\hyperref[raymond2024]{Raymond, 2024}). This is signalling a change in culture
+For many years in the NFL there seemed to be a consistent standard that on 4th down your team will kick a field goal or punt the ball for better field position. The only exception being the dying moments in a game when teams are desperate. However data display tools have let us see an increase in the overall attempt percentage of teams on 4th down (\hyperref[raymond2024]{Raymond, 2024}). This is signalling a change in culture.
 
-In the NFL there has been a increasing feeling that teams need to be more aggressive on 4th downs. We have seen teams adopt this strategy. Most famously is the Detroit lion's mentality since the arrival of their current head coach Dan Campbell. The lions adopted a aggressive strategy to match their aggressive "biting off knee caps" mentality. While the lions have seen success for the first time in years they have also been criticized for their aggressive play calling. This was seen in the 2023-24 playoff divisional round game in which the lions failed a 4th down attempt that was painted as unnecessary \hyperref[sportingnews2024]{Sporting News, 2024}. After this failed 4th down attempt there seemed to be a shift in momentum and the lions lost the game.
+In the NFL there has been a increasing feeling that teams need to be more aggressive on 4th downs. We have seen teams adopt this strategy. Most famously is the Detroit lion's mentality since the arrival of their current head coach Dan Campbell. The lions adopted a aggressive strategy to match their aggressive "biting off knee caps" mentality (\hyperref[birkett2023]{Birkett, 2023}). While the lions have seen success for the first time in years they have also been criticized for their aggressive play calling. This was seen in the 2023-24 playoff divisional round game in which the lions failed a 4th down attempt that was painted as unnecessary \hyperref[sportingnews2024]{Sporting News, 2024}. After this failed 4th down attempt there seemed to be a shift in momentum and the lions lost the game.
 
 ## Research Problem
 
-A result like this makes us ask the question "Did the lions make the right call?". This question seems to be getting answered as "yes" by the current literature on this topic. However, we need to know if different teams should go for it or not go for it depending on their situation and team build. For example it could be argued that the lions should have attempted the crucial 4th down in the 2023-24 playoff divisional round game. However if the panthers (which were a significantly worse team) where is that situation it could be argued that they should not have been as aggressive. This is because the panthers could have had a worse chance of being able to convert on 4th down.
+A result like this makes us ask the question "Did the lions make the right call?". This question seems to be getting answered as "yes" by the current literature on this topic. However, we need to know if different teams should go for it or not go for it depending on their situation and team build. For example, it could be argued that the lions should have attempted the crucial 4th down in the 2023-24 playoff divisional round game. However, if the panthers (which were a significantly worse team) were is that situation it could be argued that they should not have been as aggressive. This is because the panthers could have had a worse chance of being able to convert on 4th down.
 
 On top of this we must be weary of any recommendation that is given to a head coach. The truth is that we are not on the field, in the locker rooms, or in team meeting. This means coaches may know more then us in certain game time decision. We must approach this topic with the idea of being more practical and clear to coaches.
 
 ## Research Questions
 
-This leads us to have a need to answer some key questions about 4th downs in the NFL. First is are there certain key predictable signals that can be used to decide if a given team should attempt a 4th down. Second, is what key factors or variables about players have predictive power in 4th down attempts. In other words are there players that are more important in 4th down situations when compared to other situations. Finally. do these key factors about players have a casual effect on the outcome of 4th down attempts? Answering these questions will allow coaches to look for key signals in 4th down situations and to know which players to start on that 4th down if it is decided to attempt. This also can be applied in discovering specialty players that are overlooked due to poor performances in situations that are not similar to 4th down.
+This leads us to have a need to answer some key questions about 4th downs in the NFL. First, is are there certain key predictable signals that can be used to decide if a given team should attempt a 4th down? Second, is what key factors or variables about players have predictive power in 4th down attempts? In other words are there players that are more important in 4th down situations when compared to other situations. Finally, do these key factors about players have a casual effect on the outcome of 4th down attempts? Answering these questions will allow coaches to look for key signals in 4th down situations and to know which players to start on that 4th down if it is decided to attempt. This also can be applied in discovering specialty players that are overlooked due to poor performances in situations that are not similar to 4th down.
 
 # Literature Review
 
@@ -73,6 +73,8 @@ Here are some papers that I will be looking at:
 - \hyperref[das2003]{Das, Newey, and Vella (2003)}
 - \hyperref[cook2022]{Cook (2022)} 
 
+I currently am looking most specifically at semi-parametric models.
+
 ## Research Gap
 
 The gap in the current research revolves around the gap in quality data. Currently we see many studies include team grades or summary statistics about teams that are playing against each other. This type of generalization is needed for econometric models that cannot handle large amounts of variables. However, our non-parametric models will be able to handle data with thousands of different variables. To take advantage of this we will have information about every single player that is on the field when the ball is snapped. This will allow us to have better prediction power then previous researchers. This lack of work accomplished with highly specific data then in turn creates a lack in researchers identifying key variables about different players in the field. This is why our combined approach of predictive and casual tools will be so effective. We will be able to see what variable are or are not having a effect on 4th down conversions.
@@ -81,17 +83,17 @@ The gap in the current research revolves around the gap in quality data. Current
 
 ## Play by Play (PBP)
 
-Our data consists of play by play data from the NFL. This data is pulled from the  nflverse package in R (\hyperref[carl2024]{Carl et al., 2024}). The data ranges from 2016 to 2023. The reason for this is that after 2016 the NFL started to put tracking chips in NFL player's jerseys. This gives us information after 2016 of what players are on the field for each snap. As a note a weeks 16-18 in 2023 are missing gsis_ids of who was on the field and the data in 2016 is described as not as reliable.
+Our data consists of play by play data from the NFL. This data is pulled from the  nflverse package in R (\hyperref[carl2024]{Carl et al., 2024}). The data ranges from 2016 to 2023. The reason for this is that after 2016 the NFL started to put tracking chips in NFL player's jerseys. This gives us information after 2016 of what players are on the field for each snap. As a note a weeks 16-18 in 2023 are missing gsis_ids of who was on the field and the data in 2016 is described as not as reliable. A gsis_id is a unique identifier for a player and it crucial in our work.
 
 To create my data I have merged play by play data, participation data, roster data, and injury data. However, we may create different versions of our data depending on our models that we choose to use.
 
-First we have a third down data set. This data has the purpose of allowing us to test our Heckman Variable's validity in showing that a variable has no predictive power on a third down conversion. We then use this to bolster our argument that the variable in question has no predictive power on a 4th down conversions. We also will have a fourth down "attempts" data set. This data set will be used to show that our Heckman Correction variable does have strong prediction power on the decision to attempt a 4th down or not. (this situation is more unbalanced). Finally the end goal is to be using data of purely 4th down attempts to predict the conversion of a play.
+First, we have a third down data set. This data has the purpose of allowing us to test our Heckman Variable's validity in showing that a variable has no predictive power on a third down conversion. We then use this to bolster our argument that the variable in question has no predictive power on a 4th down conversions. We also will have a fourth down "attempts" data set. This data set will be used to show that our Heckman Correction variable does have strong prediction power on the decision to attempt a 4th down or not. (this situation is more unbalanced). Finally, the end goal is to be using data of purely 4th down attempts to predict the conversion of a play.
 
-While it is subject to change the 3rd down data set has 102,000+ rows and 1300+ columns. The 4th down attempts data set has 60,000+ rows and 1300+ columns. 
+While it is subject to change the 3rd down data set has 56,000+ rows and 1300+ columns. The 4th down attempts data set has 33,000+ rows and 1300+ columns. 
 
 ## Pro Football Focus (PFF)
 
-Our weekly player data is a combination of reports from \hyperref[pff2024]{Pro Football Focus, 2024} from 2016 to 2023. This data is downloaded in the form of different positional reports. For example, we downloaded the receiving reports labeled as "Receiving Grades, Receiving Depth, Receiving Concept, and Receiving vs Scheme". Each row in these reports would be how a player did in certain areas covered by that report that week. This however is useless to us as we needed to merge every report into each other.
+Our weekly player data is a combination of reports from \hyperref[pff2024]{Pro Football Focus, (2024)} from 2016 to 2023. This data is downloaded in the form of different positional reports. For example, we downloaded the receiving reports labeled as "Receiving Grades, Receiving Depth, Receiving Concept, and Receiving vs Scheme". Each row in these reports contains information how a player did in certain areas covered by that report that week. This by itself is useless to us, as we need to merge every report into each other.
 
 We ended up with a data set that is 158,000+ rows and 1,500+ columns. Each column is a different stat that may or may not apply to a player (e.g. a receiving grade does not apply to a DE).
 
@@ -100,9 +102,23 @@ So for each row in this engineered data set there is a player, their basic infor
 
 ## Merging 
 
-The most key aspect of this entire thesis is the merging of these two datasets. We can start with how in our pbp data we have the gsis_ids of every player that was on the field at the time of the play. A gisi_id is the main unique identifier for the player. So we need to take our PFF data and for each player merge it into the pbp data. The pbp data that we are merging it into has 9,000+ rows which each represent a 4th down attempt that a team intended to go for. This creates a data set with 9,000+ rows and 25,000+ columns. The amount of columns is due to the specificness of the information that we have about players on the field. As we continue to merge this data and add or drop different types of variables this number of columns will change. I believe it will increase as we find new information. As our project proceeds we will narrow down our specificness as needed.
+A problem we encountered is that the PFF players do not have a gsis_id. They instead have a pff_id. Unfortunately not all players with a gsis_id have a available pff_id. On top of that the names between the data sets do not always match up. Currently I am working on different methods of matching these players between datasets. This match I currently am doing in a multi-step process off of standardized names, parts of names, positions, years played, and teams. For the players that have a pff_id assigned to their gsis_id this matching process is not needed. As a part of our contribution to this field of study I will be providing the dataset of 4900+ players with matched PFF and GSIS IDs. If you desire the code for this process to extend it to other years or play types please reach out to me via email.
 
-A problem we are encountering is that the PFF players do not have a gsis_id. They instead have a pff_id. Unfortunately not all players with a gsis_id have a available pff_id. On top of that the names between the data sets do not always match up. Currently I am working on different methods of matching these players between datasets. There also are multiple players with the same name. This match I currently believe can be done off of parts of names, positions, and teams. For the players that have a pff_id assigned to their gsis_id this matching process is not needed.
+The most key aspect of this entire thesis is the merging of the PFF and PBP datasets. We can start with how in our PBP data we have the gsis_ids of every player that was on the field at the time of the play. A gisi_id is the main unique identifier for the player. So we need to take our PFF data and for each player merge it into the PBP data. 
+
+We have multiple types of PBP datasets that we are merging PFF data into. First we have a 3rd down data set that is used to bolster our argument that are exogenous variable that is used for correction of self selection sample bias has no effect on 4th down completions. 
+
+Our 4th down data set on the other hand has multiple uses. First, it will be used to show that our exogenous variable has a effect on the decision to attempt a 4th down. In this case the dependent variable is the decision to attempt a 4th down. Second, the 4th down data will be filtered down to situations where a team "went for it" with a run or a pass play. In this case the dependent variable is the completion of a 4th down. 
+
+I currently am hesitant to be stating the exact numbers of columns and rows within this data as these numbers will change as we engineer new features, generalize our existing features or filter our data more. However both the 3rd down and 4th down data currently have over 45,000 columns without any forms of generalization. Our 3rd down data set currently consists of 56,000+ rows and our 4th down data set consists of 33,000+ rows. However when our 4th down set is filtered to only include "went for it" plays we get 400-900 observations a year.
+
+Here are some general areas that the data captures:
+
+-  Game situation (down, distance, score, time remaining, location)
+-  Player specifics ("rushing years/passing yards/blocking grades" in the past seasons)
+-  Physical player traits (height, weight, age, etc.)
+-  Player injury history (e.g. days since last injruy)
+-  Team injury history (e.g. specific type of injuries in last week/year)
 
 # Methodology
 
@@ -253,7 +269,7 @@ model_4th3 <- model_4th3 %>%
 
 ## Notes before proceeding
 
--   For display purposes most of the code that produces the data and plots are not shown. However, the code will be made available via my personal github page (). 
+-   For display purposes most of the code that produces the data and plots are not shown. However, the code will be made available via my personal github page (https://github.com/SimonRaymond2003). 
 -   The OLS model takes no account for Heteroskedasticity or Autocorrelation.
 -   The current data ignores how good the teams are (offensive and defensive). For that reason our prediction power doesn't seem incredible. Howeve, with the proper data that we are creating we can improve our results.
 -   The relationships are definitely non-linear. In some cases though, I could engineer the data to help OLS. For example the minutes left in the game could be two columns one that is the half and one that is the time from 0-30. However, our end goal is to be using a non-linear model.
@@ -693,7 +709,7 @@ cat("Mean AUC:", mean(auc), "\n")
 cat("95% CI: [", mean(auc) - 1.96 * sd(auc), ",", mean(auc) + 1.96 * sd(auc), "]\n")
 ```
 
-We see a significant worse performance then with a random forest model. 
+We see a significantly worse performance then with a random forest model. 
 
 # References {.unnumbered}
 
@@ -721,14 +737,16 @@ We see a significant worse performance then with a random forest model.
 
 \label{yam2018}Yam, D., & Lopez, M. (2018). Quantifying the Causal Effects of Conservative Fourth Down Decision Making in the National Football League. Available at SSRN: https://ssrn.com/abstract=3114242 or http://dx.doi.org/10.2139/ssrn.3114242
 
-\label{carl2024}Carl, S., Baldwin, B., Sharpe, L., Ho, T., Edwards, J. (2024). **nflverse**. Play-by-play data for NFL games. Retrieved from [https://nflverse.nflverse.com/](https://nflverse.nflverse.com/).
+\label{carl2024}Carl, S., Baldwin, B., Sharpe, L., Ho, T., Edwards, J. (2024). nflverse. Play-by-play data for NFL games. Retrieved from [https://nflverse.nflverse.com/](https://nflverse.nflverse.com/).
 
 \label{pff2024}Pro Football Focus (PFF). (2024). NFL Player Performance Data. Accessed via subscription at [https://premium.pff.com/nfl/teams/2024/REGPO](https://premium.pff.com/nfl/teams/2024/REGPO).
 
-\label{raymond2024}Raymond, S. (2024). **4th Down Analysis App**. Interactive dashboard for analyzing 4th down decisions in the NFL. Available at: [https://jzmtko-yigit-aydede.shinyapps.io/NFL_4th_Down_App/](https://jzmtko-yigit-aydede.shinyapps.io/NFL_4th_Down_App/).
+\label{raymond2024}Raymond, S. (2024). *4th Down Analysis App*. Interactive dashboard for analyzing 4th down decisions in the NFL. Available at: [https://jzmtko-yigit-aydede.shinyapps.io/NFL_4th_Down_App/](https://jzmtko-yigit-aydede.shinyapps.io/NFL_4th_Down_App/).
 
 \label{sportingnews2024}Sporting News. (2024). Lions' Dan Campbell criticized for fourth-down decisions in playoff loss to 49ers. Retrieved from [https://www.sportingnews.com/us/nfl/news/lions-49ers-dan-campbell-fourth-down-decisions/b54ce7cc05c4d55fc7b46285](https://www.sportingnews.com/us/nfl/news/lions-49ers-dan-campbell-fourth-down-decisions/b54ce7cc05c4d55fc7b46285).
 
 \label{davis2010}Davis, M. C., & End, C. M. (2010). A winning proposition: The economic impact of successful National Football League franchises. *Economic Inquiry*, 48(1), 39–50. https://doi.org/10.1111/j.1465-7295.2008.00124.x
+
+\label{birkett2023}Birkett, D. (2024, January 21). On this date: Memorable kneecap speech. Sports Illustrated. Retrieved from https://www.si.com/nfl/lions/news/on-this-date-memorable-kneecap-speech
 
 
